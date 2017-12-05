@@ -54,4 +54,8 @@ public class Hand{
     }
   }
   
+  public void clear() {
+	  cards = new int[16];
+  }
+  
 }

@@ -1,5 +1,3 @@
-
-
 public class  AutoDealer{
   
   private Hand hand;
@@ -20,6 +18,10 @@ public class  AutoDealer{
     while(hand.getScore() < 17){
       hand.draw(deck.draw());
     }
+  }
+  
+  public void clearHand() {
+	  hand.clear();
   }
   
   public boolean didPlayerWin(int pScore){
