@@ -2,15 +2,16 @@
 
 public class Hand{
   
-  private int[] cards = new int[16];
-  
-  private int num11 = 0;
-  
-  private int score = 0;
-  
-  private int numCards = 0;
+  private int[] cards;
+  private int num11;
+  private int score;
+  private int numCards;
   
   public Hand(){
+    cards = new int[16];
+    numll = 0;
+    score = 0;
+    numCards = 0;
   }
   
   public int[] getCards(){
