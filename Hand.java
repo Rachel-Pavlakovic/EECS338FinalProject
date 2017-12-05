@@ -1,21 +1,23 @@
-
-
 public class Hand{
   
   private int[] cards;
-  private int num11;
+  private int numSoft;
   private int score;
   private int numCards;
   
   public Hand(){
     cards = new int[16];
-    numll = 0;
+    numSoft = 0;
     score = 0;
     numCards = 0;
   }
   
   public int[] getCards(){
     return this.cards;
+  }
+  
+  public int getScore(){
+    return this.score;
   }
   
   public String stringCards(){
@@ -40,18 +42,16 @@ public class Hand{
     numCards++;
     if (card == 1){
       score = score + 11;
-      num11++;
+      numSoft++;
     }
     else if(card == 11 || card == 12 || card == 13)
       score = score + 1;
     else
       score = score + card;
-    while(num11 > 0 && score > 21){
+    while(numSoft > 0 && score > 21){
       score = score - 10;
-      num11--;
+      numSoft--;
     }
   }
   
 }
-
-
