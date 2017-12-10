@@ -1,38 +1,66 @@
+/**
+ * 
+ * @author Andrew Leppo and Rachel Pavlakovic
+ *
+ */
 public class  AutoDealer{
   
   private Hand hand;
-  
   private Deck deck;
   
-  public AutoDealer(Deck d){
-    this.deck = d;
+  /**
+   * Constructor for AutoDealer
+   * @param deck
+   */
+  public AutoDealer(Deck deck){
+    this.deck = deck;
     this.hand = new Hand();
   }
   
+  /**
+   * 
+   * @return int 
+   */
   public int startRound(){
-    hand.draw(deck.draw());
+    hand.addCard(deck.draw());
     return hand.getCards()[1];
   }
   
+  /**
+   * 
+   */
   public void play(){
     while(hand.getScore() < 17){
-      hand.draw(deck.draw());
+      hand.addCard(deck.draw());
     }
   }
   
+  /**
+   * 
+   */
   public void clearHand() {
 	  hand.clear();
   }
   
-  public boolean didPlayerWin(int pScore){
-    if (pScore > 21 ||(pScore < hand.getScore() && hand.getScore() < 22))
+  /**
+   * 
+   * @param pScore
+   * @return boolean whether or not the player won the game
+   */
+  public boolean didPlayerWin(int playerScore){
+    if (playerScore > 21 ||(playerScore < hand.getScore() && hand.getScore() < 22))
       return false;
     else
       return true;
   }
   
-  public boolean didPlayerTie(int pScore){
-    if ((pScore > 21 && hand.getScore() > 21) ||(pScore == hand.getScore()))
+  /**
+   * 
+   * @param pScore
+   * @return boolean whether or not the player tied with the dealer
+   */
+  public boolean didPlayerTie(int playerScore){
+    if ((playerScore > 21 && hand.getScore() > 21) ||(playerScore == hand.getScore()))
       return true;
     else
       return false;

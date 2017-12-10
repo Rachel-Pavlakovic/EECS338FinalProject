@@ -5,12 +5,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 
+ * @author Andrew Leppo and Rachel Pavlakovic
+ *
+ */
 public class Server {
 	
 	private static Deck deck;
 	private static Hand hand;
 	private static AutoDealer dealer;
 	
+	/**
+	 * Main Method
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		ConcurrentHashMap<String, Integer> chips = new ConcurrentHashMap<String, Integer>();
 		ServerSocket listener = new ServerSocket(9898);
@@ -25,6 +35,11 @@ public class Server {
 		 }
 	}
 	
+	/**
+	 * 
+	 * Static inner class that represents a seat at the table
+	 *
+	 */
 	private static class Seat extends Thread {
 		private Socket socket;
 		private ConcurrentHashMap<String, Integer> chipCount;
@@ -56,6 +71,10 @@ public class Server {
 			}
 		}
 		
+		/**
+		 * 
+		 * @throws IOException
+		 */
 		private void getStreams() throws IOException {
 			
 			output = new ObjectOutputStream( socket.getOutputStream() );
@@ -65,6 +84,10 @@ public class Server {
 
 		} 
 		
+		/**
+		 * 
+		 * @throws IOException
+		 */
 		private void processConnection() throws IOException {
 			String message = "Connection successful";
 			sendData(message); 
@@ -98,12 +121,19 @@ public class Server {
 			while ( !message.equals( "CLIENT>>> TERMINATE" ) );
 		} 
 		
+		/**
+		 * 
+		 */
 		private void cardhit() {
-			hand.draw(deck.draw());
+			hand.addCard(deck.draw());
 			
 			sendData("Your Total: " +  hand.getScore());
 		}
 		
+		/**
+		 * 
+		 * @param message
+		 */
 		private void sendData( String message ) {
 			try {
 				output.writeObject( message );
@@ -113,6 +143,10 @@ public class Server {
 			} 
 		} 
 	
+		/**
+		 * 
+		 * @param message
+		 */
 		private void log(String message) {
 			System.out.println(message);
 		}

@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,17 +6,25 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.net.InetAddress;
 
+/**
+ * 
+ * @author Andrew Leppo and Rachel Pavlakovic
+ *
+ */
 public class BJClient{
   
   private Socket socket;
   private BufferedReader in;
   private PrintWriter out;
   private String userName;
-  
   private Scanner userInput;
-  
   private boolean playing;
   
+  /**
+   * Constructor for the BJClient
+   * @param userName
+   * @throws IOException
+   */
   public BJClient(String userName) throws IOException{
     this.playing = true;
     this.userName = userName;
