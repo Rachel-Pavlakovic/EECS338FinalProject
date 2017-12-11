@@ -63,7 +63,7 @@ public class Hand{
 	  }
 	  return hand.toString();
   }
-  
+    
   /**
    * Adds a new card to the hand
    * @param card

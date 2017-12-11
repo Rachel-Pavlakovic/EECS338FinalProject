@@ -19,6 +19,7 @@ public class BJClient{
   private String userName;
   private Scanner userInput;
   private boolean playing;
+  private String message;
   
   /**
    * Constructor for the BJClient
@@ -33,20 +34,33 @@ public class BJClient{
     
     in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     out = new PrintWriter(socket.getOutputStream(), true);
-    
+	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+	
     while(playing){
       
       // get server message
+    	message = in.readLine();
       
       // print server message
+    	System.out.println(message);
       
       // get response from user
+    	String userInput = stdIn.readLine();
       
       // if "stop" set playing to "false"
+    	if(userInput.equals("stop")) {
+    		playing = false;
+    	}
       // else send response to server
+    	else {
+    		out.println(userInput);
+    	}
       
     }
     
+    out.close();
+    in.close();
+    stdIn.close();
     this.socket.close();
     
   }
