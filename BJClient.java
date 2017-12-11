@@ -30,7 +30,7 @@ public class BJClient{
             BufferedReader in = null;
  
             try {
-                socket = new Socket(serverHost, 8081);
+                socket = new Socket(serverHost, 9898);
                 out = new PrintWriter(socket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             } catch (UnknownHostException e) {
@@ -42,24 +42,29 @@ public class BJClient{
             }
  
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+            int counter = 0;
             String message;
             
             while(true){
-            	message = in.readLine();
-
-                // print server message
-              	System.out.println(message);
-                
+            	
+            	if(counter == 0) {
+            		System.out.println("Enter username: ");
+            		counter++;
+            	}
+            	
                 // get response from user
               	String userInput = stdIn.readLine();
                 
-              	if(userInput.equals("stop")) {
+              	if(userInput.equals("quit")) {
               		break;
               	}
                 // else send response to server
               	else {
               		out.println(userInput);
               	}
+
+            	message = in.readLine();
+            	System.out.println(message);
             }
             out.close();
             in.close();
