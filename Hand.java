@@ -61,6 +61,7 @@ public class Hand{
 			  break;  
 		  }
 	  }
+	  hand.deleteCharAt(hand.length() - 2);
 	  return hand.toString();
   }
     
@@ -77,7 +78,7 @@ public class Hand{
       numSoft++;
     }
     else if(card == 11 || card == 12 || card == 13) {
-      score = score + 1;
+      score = score + 10;
     }
     else {
       score = score + card;

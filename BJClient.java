@@ -62,7 +62,8 @@ public class BJClient{
               	else {
               		out.println(userInput);
               	}
-
+              	
+              	//get response from server and print to screen
             	message = in.readLine();
             	System.out.println(message);
             }

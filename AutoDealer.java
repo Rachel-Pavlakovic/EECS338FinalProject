@@ -27,6 +27,13 @@ public class  AutoDealer{
   }
   
   /**
+ * @return the hand
+ */
+public Hand getHand() {
+	return hand;
+}
+
+/**
    * 
    */
   public void play(){
