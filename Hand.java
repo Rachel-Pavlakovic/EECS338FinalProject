@@ -64,25 +64,6 @@ public class Hand{
 	  return hand.toString();
   }
   
-  /*
-  public String stringCards(){
-    StringBuilder out = new StringBuilder();
-    for(int i = 0; i<16;i++){
-      if (cards[i] == 1)
-        out.append("A, ");
-      else if (cards[i] == 11)
-        out.append("J, ");
-      else if (cards[i] == 12)
-        out.append("Q, ");
-      else if (cards[i] == 13)
-        out.append("K, ");
-      else
-        out.append(cards[i] + ", ");
-    }
-    return out.toString();
-  }
-  */
-  
   /**
    * Adds a new card to the hand
    * @param card
