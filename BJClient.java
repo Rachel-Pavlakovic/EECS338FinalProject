@@ -42,18 +42,13 @@ public class BJClient{
             }
  
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+            String message;
             
             while(true){
-            	String message = null;
-            	
-            	while(message == null) {
-            		// get server message
-            		message = in.readLine();
-            	}
-                
+            	message = in.readLine();
+
                 // print server message
               	System.out.println(message);
-              	message = null;
                 
                 // get response from user
               	String userInput = stdIn.readLine();
